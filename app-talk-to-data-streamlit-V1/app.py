@@ -82,6 +82,8 @@ if st.button("Gerar resultado"):
         with st.spinner("Gerando resultado..."):
             answer = dados.chat(texto_usuario_traduzido)
             if list_set.intersection(string_set):
+                st.success(answer)
+                st.set_option('deprecation.showPyplotGlobalUse', False)
                 st.pyplot()
             else:
                 st.write(answer)
