@@ -1,0 +1,667 @@
+2024-08-09 10:40:53 [INFO] Question: What is the name and financial amount of the taxpayer with the highest financial amount?, answer in Portuguese
+2024-08-09 10:40:53 [INFO] Running PandasAI with openai LLM...
+2024-08-09 10:40:53 [INFO] Prompt ID: ad4c3dc0-ea8f-4196-a139-42dd92af19cd
+2024-08-09 10:40:53 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 10:40:53 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 10:40:53 [INFO] Executing Step 1: CacheLookup
+2024-08-09 10:40:53 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 10:40:53 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d65398410ef,106.143,BR PARTICIPACOES E INVESTIMENTO LTDA,0.0,True,18835.49,28,26.0,Médio,Alta,False,,True,,True,False,False,False,False,True,,False,False,True,True,0,-500,0,0,-300,0,0,-100,-100,-100,0,-50,-30,370,Bom
+66a7ddc8d9c89d65398415d1,501.310,JULIANA GONÇALVES DA SILVA,,False,19773.989999999998,51,16.0,Alto,Alta,False,False,,False,False,True,True,False,True,False,27.0,True,False,True,False,0,-500,-500,0,0,-300,-200,0,0,0,-100,0,0,750,Baixo
+66a7ddc8d9c89d6539842362,343.684,IDEMIR ALVES DIAS,1.0,False,2786.74,157,19.0,Baixo,Baixa,False,True,False,True,True,True,True,True,False,False,9.0,True,True,False,True,0,0,0,-300,-300,-300,-200,-100,0,-100,0,-50,-30,700,Muito baixo
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the name and financial amount of the taxpayer with the highest financial amount?, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 10:40:53 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 10:41:03 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 10:41:03 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d65398410ef,106.143,BR PARTICIPACOES E INVESTIMENTO LTDA,0.0,True,18835.49,28,26.0,Médio,Alta,False,,True,,True,False,False,False,False,True,,False,False,True,True,0,-500,0,0,-300,0,0,-100,-100,-100,0,-50,-30,370,Bom
+66a7ddc8d9c89d65398415d1,501.310,JULIANA GONÇALVES DA SILVA,,False,19773.989999999998,51,16.0,Alto,Alta,False,False,,False,False,True,True,False,True,False,27.0,True,False,True,False,0,-500,-500,0,0,-300,-200,0,0,0,-100,0,0,750,Baixo
+66a7ddc8d9c89d6539842362,343.684,IDEMIR ALVES DIAS,1.0,False,2786.74,157,19.0,Baixo,Baixa,False,True,False,True,True,True,True,True,False,False,9.0,True,True,False,True,0,0,0,-300,-300,-300,-200,-100,0,-100,0,-50,-30,700,Muito baixo
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the name and financial amount of the taxpayer with the highest financial amount?, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-08-09 10:41:03 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+highest_amount_taxpayer = max(dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'])
+highest_amount_taxpayer_info = dfs[0][dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'] == highest_amount_taxpayer][['NOME_CONTRIBUINTE', 'MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO']]
+
+result = {"type": "string", "value": f"O contribuinte com o maior montante financeiro é {highest_amount_taxpayer_info['NOME_CONTRIBUINTE'].values[0]} com o valor de R${highest_amount_taxpayer_info['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'].values[0]:.2f}."}
+            ```
+            
+2024-08-09 10:41:03 [INFO] Executing Step 4: CachePopulation
+2024-08-09 10:41:03 [INFO] Executing Step 5: CodeCleaning
+2024-08-09 10:41:03 [INFO] 
+Code running:
+```
+highest_amount_taxpayer = max(dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'])
+highest_amount_taxpayer_info = dfs[0][dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'] == highest_amount_taxpayer][['NOME_CONTRIBUINTE', 'MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO']]
+result = {'type': 'string', 'value': f"O contribuinte com o maior montante financeiro é {highest_amount_taxpayer_info['NOME_CONTRIBUINTE'].values[0]} com o valor de R${highest_amount_taxpayer_info['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'].values[0]:.2f}."}
+        ```
+2024-08-09 10:41:03 [INFO] Executing Step 6: CodeExecution
+2024-08-09 10:41:03 [INFO] Executing Step 7: ResultValidation
+2024-08-09 10:41:03 [INFO] Answer: {'type': 'string', 'value': 'O contribuinte com o maior montante financeiro é DELMAIR SOUZA BORJA RAMOS com o valor de R$522019163.01.'}
+2024-08-09 10:41:03 [INFO] Executing Step 8: ResultParsing
+2024-08-09 10:42:01 [INFO] Question: Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+2024-08-09 10:42:01 [INFO] Running PandasAI with openai LLM...
+2024-08-09 10:42:01 [INFO] Prompt ID: 067da160-6baa-4763-a05a-6a9905af71dd
+2024-08-09 10:42:01 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 10:42:01 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 10:42:01 [INFO] Executing Step 1: CacheLookup
+2024-08-09 10:42:01 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 10:42:01 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539840253,307.971,3840309603,,False,11282.07,53,3.0,Baixo,Alta,False,False,True,,True,True,True,False,True,False,20.0,False,True,True,True,0,-500,0,0,0,0,0,0,0,-100,-100,-50,0,220,Muito baixo
+66a7ddc8d9c89d6539841bd3,50.920,2381529386,1.0,True,3339454.69,135,16.0,Médio,Baixa,False,,False,False,False,True,True,False,False,True,,False,False,False,True,0,-500,-500,-300,0,-300,-200,-100,-100,0,0,-50,-30,0,Excelente
+66a7ddc8d9c89d653984199a,216.798,5007079118,0.0,False,5535.369000000001,414,15.0,Alto,Baixa,False,True,,True,False,False,False,True,False,False,0.0,True,True,False,False,0,0,0,0,-300,-300,0,-100,-100,-100,0,0,0,270,Médio
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 10:42:01 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 10:42:06 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 10:42:06 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539840253,307.971,3840309603,,False,11282.07,53,3.0,Baixo,Alta,False,False,True,,True,True,True,False,True,False,20.0,False,True,True,True,0,-500,0,0,0,0,0,0,0,-100,-100,-50,0,220,Muito baixo
+66a7ddc8d9c89d6539841bd3,50.920,2381529386,1.0,True,3339454.69,135,16.0,Médio,Baixa,False,,False,False,False,True,True,False,False,True,,False,False,False,True,0,-500,-500,-300,0,-300,-200,-100,-100,0,0,-50,-30,0,Excelente
+66a7ddc8d9c89d653984199a,216.798,5007079118,0.0,False,5535.369000000001,414,15.0,Alto,Baixa,False,True,,True,False,False,False,True,False,False,0.0,True,True,False,False,0,0,0,0,-300,-300,0,-100,-100,-100,0,0,0,270,Médio
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-08-09 10:42:06 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data into a DataFrame
+data = {
+    "_id": ["66a7ddc8d9c89d6539840253", "66a7ddc8d9c89d6539841bd3", "66a7ddc8d9c89d653984199a"],
+    "TAG_SCORE": ["Muito baixo", "Excelente", "Médio"]
+}
+df = pd.DataFrame(data)
+
+# Calculate the percentage of each category for TAG_SCORE
+tag_score_counts = df['TAG_SCORE'].value_counts(normalize=True) * 100
+
+# Plotting the pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(tag_score_counts, labels=tag_score_counts.index, autopct='%1.1f%%', startangle=140, colors=['skyblue', 'lightgreen', 'lightcoral'])
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Porcentagem de cada categoria para TAG_SCORE')
+plt.show()
+
+# Declare result var
+result = {"type": "plot", "value": "pie_chart_tag_score.png"}
+            ```
+            
+2024-08-09 10:42:06 [INFO] Executing Step 4: CachePopulation
+2024-08-09 10:42:06 [INFO] Executing Step 5: CodeCleaning
+2024-08-09 10:42:06 [INFO] Saving charts to C:\Users\ACER\Desktop\Trabalho\repos\app-talk-to-data-streamlit_V1\exports\charts\temp_chart.png
+2024-08-09 10:42:06 [INFO] 
+Code running:
+```
+data = {'_id': ['66a7ddc8d9c89d6539840253', '66a7ddc8d9c89d6539841bd3', '66a7ddc8d9c89d653984199a'], 'TAG_SCORE': ['Muito baixo', 'Excelente', 'Médio']}
+df = pd.DataFrame(data)
+tag_score_counts = df['TAG_SCORE'].value_counts(normalize=True) * 100
+plt.figure(figsize=(8, 8))
+plt.pie(tag_score_counts, labels=tag_score_counts.index, autopct='%1.1f%%', startangle=140, colors=['skyblue', 'lightgreen', 'lightcoral'])
+plt.axis('equal')
+plt.title('Porcentagem de cada categoria para TAG_SCORE')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'}
+        ```
+2024-08-09 10:42:06 [INFO] Executing Step 6: CodeExecution
+2024-08-09 10:42:06 [ERROR] Pipeline failed on step 6: [Errno 2] No such file or directory: 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'
+2024-08-09 10:43:25 [INFO] Question: Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+2024-08-09 10:43:25 [INFO] Running PandasAI with openai LLM...
+2024-08-09 10:43:25 [INFO] Prompt ID: 2db144c9-c169-4995-9696-219a03892899
+2024-08-09 10:43:25 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 10:43:25 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 10:43:25 [INFO] Executing Step 1: CacheLookup
+2024-08-09 10:43:25 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 10:43:25 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d653984131e,431.745,RP TOPOGRAFIA ENGENHARIA LTDA,0.0,True,1296.48,140,17.0,Médio,Baixa,False,,True,True,False,False,True,False,False,False,,True,True,True,False,0,-500,0,-300,0,-300,-200,-100,0,0,-100,0,0,820,Muito baixo
+66a7ddc8d9c89d6539842ce9,621.156,CHDS DO BRASIL COMERCIO DE INSUMOS AGRICOLAS LTDA,1.0,False,1446.42,103,7.0,Baixo,Alta,False,False,,False,True,True,True,True,True,True,23.0,False,True,False,True,0,-500,-500,-300,-300,0,0,-100,-100,0,-100,-50,-30,870,Bom
+66a7ddc8d9c89d6539841cb3,664.493,GABRIEL FRANCISCO DA SILVA,,False,5631.03,25,14.0,Alto,Alta,False,True,False,,False,True,False,True,False,False,6.0,False,False,True,True,0,0,0,0,0,0,-200,0,-100,-100,0,0,0,370,Excelente
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 10:43:25 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 10:43:29 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 10:43:29 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d653984131e,431.745,RP TOPOGRAFIA ENGENHARIA LTDA,0.0,True,1296.48,140,17.0,Médio,Baixa,False,,True,True,False,False,True,False,False,False,,True,True,True,False,0,-500,0,-300,0,-300,-200,-100,0,0,-100,0,0,820,Muito baixo
+66a7ddc8d9c89d6539842ce9,621.156,CHDS DO BRASIL COMERCIO DE INSUMOS AGRICOLAS LTDA,1.0,False,1446.42,103,7.0,Baixo,Alta,False,False,,False,True,True,True,True,True,True,23.0,False,True,False,True,0,-500,-500,-300,-300,0,0,-100,-100,0,-100,-50,-30,870,Bom
+66a7ddc8d9c89d6539841cb3,664.493,GABRIEL FRANCISCO DA SILVA,,False,5631.03,25,14.0,Alto,Alta,False,True,False,,False,True,False,True,False,False,6.0,False,False,True,True,0,0,0,0,0,0,-200,0,-100,-100,0,0,0,370,Excelente
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-08-09 10:43:29 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    "TAG_SCORE": ["Muito baixo", "Bom", "Excelente"],
+    "COUNT": [1, 1, 1]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Plotting
+plt.figure(figsize=(8, 8))
+plt.pie(df["COUNT"], labels=df["TAG_SCORE"], autopct='%1.1f%%', startangle=140, colors=['red', 'green', 'blue'])
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title("Porcentagem de cada categoria para TAG_SCORE")
+plt.show()
+
+# Declare result var
+result = {"type": "plot", "value": "pie_chart_tag_score.png"}
+            ```
+            
+2024-08-09 10:43:29 [INFO] Executing Step 4: CachePopulation
+2024-08-09 10:43:29 [INFO] Executing Step 5: CodeCleaning
+2024-08-09 10:43:29 [INFO] Saving charts to C:\Users\ACER\Desktop\Trabalho\repos\app-talk-to-data-streamlit_V1\exports\charts\temp_chart.png
+2024-08-09 10:43:29 [INFO] 
+Code running:
+```
+data = {'TAG_SCORE': ['Muito baixo', 'Bom', 'Excelente'], 'COUNT': [1, 1, 1]}
+df = pd.DataFrame(data)
+plt.figure(figsize=(8, 8))
+plt.pie(df['COUNT'], labels=df['TAG_SCORE'], autopct='%1.1f%%', startangle=140, colors=['red', 'green', 'blue'])
+plt.axis('equal')
+plt.title('Porcentagem de cada categoria para TAG_SCORE')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'}
+        ```
+2024-08-09 10:43:29 [INFO] Executing Step 6: CodeExecution
+2024-08-09 10:43:29 [ERROR] Pipeline failed on step 6: [Errno 2] No such file or directory: 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'
+2024-08-09 10:44:46 [INFO] Question: Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+2024-08-09 10:44:46 [INFO] Running PandasAI with openai LLM...
+2024-08-09 10:44:46 [INFO] Prompt ID: 7bdcbb51-5e71-4b03-8258-12a86259d425
+2024-08-09 10:44:46 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 10:44:46 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 10:44:46 [INFO] Executing Step 1: CacheLookup
+2024-08-09 10:44:46 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 10:44:46 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539841d13,194.271,5556346187,1.0,False,748.283,86,23.0,Baixo,Baixa,False,False,True,,True,False,False,False,True,False,,False,True,False,False,0,0,-500,0,-300,-300,-200,0,0,-100,-100,0,0,450,Muito baixo
+66a7ddc8d9c89d6539842955,410.764,9594637464,,True,1075.5,74,8.0,Médio,Alta,False,True,,True,True,False,True,False,True,True,6.0,True,False,False,True,0,0,0,-300,-300,0,0,0,-100,-100,0,-50,-30,320,Excelente
+66a7ddc8d9c89d6539840010,477.397,0431168727,0.0,False,58.42,81,19.0,Alto,Alta,False,,False,False,False,True,True,True,False,True,28.0,True,False,True,True,0,-500,-500,0,0,-300,0,-100,-100,0,-100,0,0,350,Bom
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 10:44:46 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 10:44:50 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 10:44:50 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539841d13,194.271,5556346187,1.0,False,748.283,86,23.0,Baixo,Baixa,False,False,True,,True,False,False,False,True,False,,False,True,False,False,0,0,-500,0,-300,-300,-200,0,0,-100,-100,0,0,450,Muito baixo
+66a7ddc8d9c89d6539842955,410.764,9594637464,,True,1075.5,74,8.0,Médio,Alta,False,True,,True,True,False,True,False,True,True,6.0,True,False,False,True,0,0,0,-300,-300,0,0,0,-100,-100,0,-50,-30,320,Excelente
+66a7ddc8d9c89d6539840010,477.397,0431168727,0.0,False,58.42,81,19.0,Alto,Alta,False,,False,False,False,True,True,True,False,True,28.0,True,False,True,True,0,-500,-500,0,0,-300,0,-100,-100,0,-100,0,0,350,Bom
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-08-09 10:44:50 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    "_id": ["66a7ddc8d9c89d6539841d13", "66a7ddc8d9c89d6539842955", "66a7ddc8d9c89d6539840010"],
+    "TAG_SCORE": ["Muito baixo", "Excelente", "Bom"]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Calculate percentage of each category
+tag_score_percentage = df['TAG_SCORE'].value_counts(normalize=True) * 100
+
+# Plotting the pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(tag_score_percentage, labels=tag_score_percentage.index, autopct='%1.1f%%', startangle=140, colors=['#ff9999', '#66b3ff', '#99ff99'])
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title("Porcentagem de cada categoria para TAG_SCORE")
+plt.show()
+
+# Declare result var
+result = {"type": "plot", "value": "pie_chart_tag_score.png"}
+            ```
+            
+2024-08-09 10:44:50 [INFO] Executing Step 4: CachePopulation
+2024-08-09 10:44:50 [INFO] Executing Step 5: CodeCleaning
+2024-08-09 10:44:50 [INFO] Saving charts to C:\Users\ACER\Desktop\Trabalho\repos\app-talk-to-data-streamlit_V1\exports\charts\temp_chart.png
+2024-08-09 10:44:50 [INFO] 
+Code running:
+```
+data = {'_id': ['66a7ddc8d9c89d6539841d13', '66a7ddc8d9c89d6539842955', '66a7ddc8d9c89d6539840010'], 'TAG_SCORE': ['Muito baixo', 'Excelente', 'Bom']}
+df = pd.DataFrame(data)
+tag_score_percentage = df['TAG_SCORE'].value_counts(normalize=True) * 100
+plt.figure(figsize=(8, 8))
+plt.pie(tag_score_percentage, labels=tag_score_percentage.index, autopct='%1.1f%%', startangle=140, colors=['#ff9999', '#66b3ff', '#99ff99'])
+plt.axis('equal')
+plt.title('Porcentagem de cada categoria para TAG_SCORE')
+plt.show()
+result = {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'}
+        ```
+2024-08-09 10:44:50 [INFO] Executing Step 6: CodeExecution
+2024-08-09 10:44:50 [INFO] Executing Step 7: ResultValidation
+2024-08-09 10:44:50 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'}
+2024-08-09 10:44:50 [INFO] Executing Step 8: ResultParsing
+2024-08-09 10:48:17 [INFO] Question: Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+2024-08-09 10:48:17 [INFO] Running PandasAI with openai LLM...
+2024-08-09 10:48:17 [INFO] Prompt ID: f400d676-8a41-4060-8f61-da96579b9c20
+2024-08-09 10:48:17 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 10:48:18 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 10:48:18 [INFO] Executing Step 1: CacheLookup
+2024-08-09 10:48:18 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 10:48:18 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539841dd1,533.719,SEBASTIAO FERNANDES DE SOUZA,1.0,False,800.65,131,25.0,Baixo,Baixa,False,,True,False,False,True,True,True,False,False,26.0,False,True,False,True,0,0,0,-300,0,0,-200,-100,-100,0,-100,-50,0,750,Bom
+66a7ddc8d9c89d65398405a8,625.691,REJANE MARIA ROMAN,0.0,True,2647.25,58,6.0,Alto,Baixa,False,False,False,True,False,False,False,True,True,True,22.0,False,False,True,True,0,0,0,-300,-300,-300,-200,0,0,0,0,0,-30,520,Baixo
+66a7ddc8d9c89d6539840f16,677.429,JOCELIO N.DOS SANTOS SALVATERR,,True,12004.2,72,13.0,Médio,Alta,False,True,,,True,False,False,False,True,True,,True,True,False,False,0,-500,-500,0,0,-300,0,0,0,-100,-100,-50,-30,850,Médio
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 10:48:18 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 10:48:30 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 10:48:30 [ERROR] Pipeline failed on step 3: No code found in the response
+2024-08-09 10:49:40 [INFO] Question: Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+2024-08-09 10:49:40 [INFO] Running PandasAI with openai LLM...
+2024-08-09 10:49:40 [INFO] Prompt ID: a871a263-87ec-433b-94d6-030ff8024864
+2024-08-09 10:49:40 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 10:49:41 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 10:49:41 [INFO] Executing Step 1: CacheLookup
+2024-08-09 10:49:41 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 10:49:41 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539842f14,505.130,ELIS REGINA PEREIRA ARAUJO,,True,304.01,329,35.0,Baixo,Baixa,False,True,True,True,False,True,False,True,False,True,0.0,False,False,True,False,0,-500,-500,-300,0,-300,-200,0,0,-100,-100,-50,0,200,Muito baixo
+66a7ddc8d9c89d6539842173,307.254,TRANSFREIRE TRANSPORTES RODOVIARIOS DE C,1.0,False,3169.0,36,16.0,Alto,Baixa,False,False,False,False,False,True,True,False,True,False,10.0,True,True,False,False,0,-500,-500,-300,0,0,-200,0,0,0,-100,0,-30,300,Excelente
+66a7ddc8d9c89d6539842703,416.126,PAULO CEZAR PEREIRA,0.0,True,8479.720000000001,35,31.0,Médio,Alta,False,,,,True,False,False,False,False,False,,False,True,True,True,0,0,0,0,-300,0,0,-100,-100,-100,0,-50,-30,370,Baixo
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 10:49:41 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 10:49:44 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 10:49:44 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539842f14,505.130,ELIS REGINA PEREIRA ARAUJO,,True,304.01,329,35.0,Baixo,Baixa,False,True,True,True,False,True,False,True,False,True,0.0,False,False,True,False,0,-500,-500,-300,0,-300,-200,0,0,-100,-100,-50,0,200,Muito baixo
+66a7ddc8d9c89d6539842173,307.254,TRANSFREIRE TRANSPORTES RODOVIARIOS DE C,1.0,False,3169.0,36,16.0,Alto,Baixa,False,False,False,False,False,True,True,False,True,False,10.0,True,True,False,False,0,-500,-500,-300,0,0,-200,0,0,0,-100,0,-30,300,Excelente
+66a7ddc8d9c89d6539842703,416.126,PAULO CEZAR PEREIRA,0.0,True,8479.720000000001,35,31.0,Médio,Alta,False,,,,True,False,False,False,False,False,,False,True,True,True,0,0,0,0,-300,0,0,-100,-100,-100,0,-50,-30,370,Baixo
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-08-09 10:49:44 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Convert TAG_SCORE column to categorical data type
+dfs[0]['TAG_SCORE'] = dfs[0]['TAG_SCORE'].astype('category')
+
+# Calculate the percentage of each category in TAG_SCORE
+tag_score_percentage = dfs[0]['TAG_SCORE'].value_counts(normalize=True) * 100
+
+# Plotting the pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(tag_score_percentage, labels=tag_score_percentage.index, autopct='%1.1f%%', startangle=140, colors=plt.cm.tab20.colors)
+plt.title('Porcentagem de cada categoria para TAG_SCORE')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle
+
+# Save the plot as a PNG file
+plt.savefig('tag_score_pie_chart.png')
+
+# Declare result var
+result = {"type": "plot", "value": "tag_score_pie_chart.png"}
+            ```
+            
+2024-08-09 10:49:44 [INFO] Executing Step 4: CachePopulation
+2024-08-09 10:49:44 [INFO] Executing Step 5: CodeCleaning
+2024-08-09 10:49:44 [INFO] Saving charts to C:\Users\ACER\Desktop\Trabalho\repos\app-talk-to-data-streamlit_V1\exports\charts\temp_chart.png
+2024-08-09 10:49:44 [INFO] 
+Code running:
+```
+dfs[0]['TAG_SCORE'] = dfs[0]['TAG_SCORE'].astype('category')
+tag_score_percentage = dfs[0]['TAG_SCORE'].value_counts(normalize=True) * 100
+plt.figure(figsize=(8, 8))
+plt.pie(tag_score_percentage, labels=tag_score_percentage.index, autopct='%1.1f%%', startangle=140, colors=plt.cm.tab20.colors)
+plt.title('Porcentagem de cada categoria para TAG_SCORE')
+plt.axis('equal')
+plt.savefig('C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'}
+        ```
+2024-08-09 10:49:44 [INFO] Executing Step 6: CodeExecution
+2024-08-09 10:49:44 [INFO] Executing Step 7: ResultValidation
+2024-08-09 10:49:45 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'}
+2024-08-09 10:49:45 [INFO] Executing Step 8: ResultParsing
