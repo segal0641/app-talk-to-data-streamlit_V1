@@ -665,3 +665,598 @@ result = {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-tal
 2024-08-09 10:49:44 [INFO] Executing Step 7: ResultValidation
 2024-08-09 10:49:45 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'}
 2024-08-09 10:49:45 [INFO] Executing Step 8: ResultParsing
+2024-08-09 11:08:11 [INFO] Question: What is the name of the taxpayer with the highest financial amount?, answer in Portuguese
+2024-08-09 11:08:11 [INFO] Running PandasAI with openai LLM...
+2024-08-09 11:08:11 [INFO] Prompt ID: 26579eb7-00a1-46f4-a401-aaf9b7598ddd
+2024-08-09 11:08:11 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 11:08:11 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 11:08:11 [INFO] Executing Step 1: CacheLookup
+2024-08-09 11:08:11 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 11:08:11 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539842042,339.369,GONÇALVES DIAS E CIA LTDA ME,0.0,False,2368.98,16,17.0,Baixo,Alta,False,False,,False,True,False,True,True,False,False,5.0,False,False,True,True,0,-500,-500,-300,-300,-300,-200,-100,0,0,-100,0,-30,50,Baixo
+66a7ddc8d9c89d65398405a1,362.263,ROSILENE DOS SANTOS,1.0,True,22157.91,63,12.0,Médio,Alta,False,,True,True,False,True,True,False,True,True,,False,False,False,False,0,0,0,0,0,-300,0,0,0,-100,0,-50,0,200,Muito baixo
+66a7ddc8d9c89d65398428e7,489.489,SIVALDO PEREIRA DA CRUZ,,True,2844.1,32,2.0,Alto,Baixa,False,True,False,,True,False,False,True,False,False,6.0,True,True,False,True,0,0,0,-300,0,0,0,0,-100,-100,0,-50,-30,320,Excelente
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the name of the taxpayer with the highest financial amount?, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 11:08:11 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 11:08:13 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 11:08:13 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539842042,339.369,GONÇALVES DIAS E CIA LTDA ME,0.0,False,2368.98,16,17.0,Baixo,Alta,False,False,,False,True,False,True,True,False,False,5.0,False,False,True,True,0,-500,-500,-300,-300,-300,-200,-100,0,0,-100,0,-30,50,Baixo
+66a7ddc8d9c89d65398405a1,362.263,ROSILENE DOS SANTOS,1.0,True,22157.91,63,12.0,Médio,Alta,False,,True,True,False,True,True,False,True,True,,False,False,False,False,0,0,0,0,0,-300,0,0,0,-100,0,-50,0,200,Muito baixo
+66a7ddc8d9c89d65398428e7,489.489,SIVALDO PEREIRA DA CRUZ,,True,2844.1,32,2.0,Alto,Baixa,False,True,False,,True,False,False,True,False,False,6.0,True,True,False,True,0,0,0,-300,0,0,0,0,-100,-100,0,-50,-30,320,Excelente
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the name of the taxpayer with the highest financial amount?, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-08-09 11:08:13 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+highest_amount_taxpayer = max(dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'])
+taxpayer_name = dfs[0].loc[dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'] == highest_amount_taxpayer, 'NOME_CONTRIBUINTE'].values[0]
+
+result = { "type": "string", "value": f"O contribuinte com o maior montante financeiro é: {taxpayer_name}." }
+            ```
+            
+2024-08-09 11:08:13 [INFO] Executing Step 4: CachePopulation
+2024-08-09 11:08:13 [INFO] Executing Step 5: CodeCleaning
+2024-08-09 11:08:13 [INFO] 
+Code running:
+```
+highest_amount_taxpayer = max(dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'])
+taxpayer_name = dfs[0].loc[dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'] == highest_amount_taxpayer, 'NOME_CONTRIBUINTE'].values[0]
+result = {'type': 'string', 'value': f'O contribuinte com o maior montante financeiro é: {taxpayer_name}.'}
+        ```
+2024-08-09 11:08:13 [INFO] Executing Step 6: CodeExecution
+2024-08-09 11:08:13 [INFO] Executing Step 7: ResultValidation
+2024-08-09 11:08:13 [INFO] Answer: {'type': 'string', 'value': 'O contribuinte com o maior montante financeiro é: DELMAIR SOUZA BORJA RAMOS.'}
+2024-08-09 11:08:13 [INFO] Executing Step 8: ResultParsing
+2024-08-09 11:22:19 [INFO] Question: What is the name and financial amount of the taxpayer with the highest financial amount?, answer in Portuguese
+2024-08-09 11:22:19 [INFO] Running PandasAI with openai LLM...
+2024-08-09 11:22:19 [INFO] Prompt ID: c33b980b-c6b4-495c-9a66-e162ece54909
+2024-08-09 11:22:19 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 11:22:19 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 11:22:19 [INFO] Executing Step 1: CacheLookup
+2024-08-09 11:22:19 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 11:22:19 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d653984111c,459.267,GABRIEL COPETTI RUARO,,False,888.42,731,11.0,Baixo,Baixa,False,False,False,False,False,False,True,True,False,False,,False,False,True,False,0,0,-500,-300,-300,0,0,-100,0,-100,-100,-50,0,520,Excelente
+66a7ddc8d9c89d65398400dd,613.883,A. DE S. PEREIRA LTDA,1.0,False,867.938,140,21.0,Alto,Baixa,False,,True,True,False,True,False,True,False,False,30.0,True,True,True,True,0,-500,0,0,-300,0,-200,0,-100,0,-100,0,-30,720,Bom
+66a7ddc8d9c89d653984059b,342.394,MOTTA FUZETI & FUZETI LTDA,0.0,True,1781.52,165,29.0,Médio,Alta,False,True,,,True,True,False,False,True,True,24.0,False,False,False,False,0,-500,-500,0,0,-300,0,0,0,0,0,0,-30,550,Muito baixo
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the name and financial amount of the taxpayer with the highest financial amount?, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 11:22:19 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 11:22:23 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 11:22:23 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d653984111c,459.267,GABRIEL COPETTI RUARO,,False,888.42,731,11.0,Baixo,Baixa,False,False,False,False,False,False,True,True,False,False,,False,False,True,False,0,0,-500,-300,-300,0,0,-100,0,-100,-100,-50,0,520,Excelente
+66a7ddc8d9c89d65398400dd,613.883,A. DE S. PEREIRA LTDA,1.0,False,867.938,140,21.0,Alto,Baixa,False,,True,True,False,True,False,True,False,False,30.0,True,True,True,True,0,-500,0,0,-300,0,-200,0,-100,0,-100,0,-30,720,Bom
+66a7ddc8d9c89d653984059b,342.394,MOTTA FUZETI & FUZETI LTDA,0.0,True,1781.52,165,29.0,Médio,Alta,False,True,,,True,True,False,False,True,True,24.0,False,False,False,False,0,-500,-500,0,0,-300,0,0,0,0,0,0,-30,550,Muito baixo
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the name and financial amount of the taxpayer with the highest financial amount?, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-08-09 11:22:23 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+highest_amount_taxpayer = max(dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'])
+highest_amount_taxpayer_info = dfs[0][dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'] == highest_amount_taxpayer][['NOME_CONTRIBUINTE', 'MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO']]
+
+result = {"type": "string", "value": f"O contribuinte com o maior montante financeiro é {highest_amount_taxpayer_info['NOME_CONTRIBUINTE'].values[0]} com o valor de R${highest_amount_taxpayer_info['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'].values[0]:,.2f}."}
+            ```
+            
+2024-08-09 11:22:23 [INFO] Executing Step 4: CachePopulation
+2024-08-09 11:22:23 [INFO] Executing Step 5: CodeCleaning
+2024-08-09 11:22:23 [INFO] 
+Code running:
+```
+highest_amount_taxpayer = max(dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'])
+highest_amount_taxpayer_info = dfs[0][dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'] == highest_amount_taxpayer][['NOME_CONTRIBUINTE', 'MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO']]
+result = {'type': 'string', 'value': f"O contribuinte com o maior montante financeiro é {highest_amount_taxpayer_info['NOME_CONTRIBUINTE'].values[0]} com o valor de R${highest_amount_taxpayer_info['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'].values[0]:,.2f}."}
+        ```
+2024-08-09 11:22:23 [INFO] Executing Step 6: CodeExecution
+2024-08-09 11:22:23 [INFO] Executing Step 7: ResultValidation
+2024-08-09 11:22:23 [INFO] Answer: {'type': 'string', 'value': 'O contribuinte com o maior montante financeiro é DELMAIR SOUZA BORJA RAMOS com o valor de R$522,019,163.01.'}
+2024-08-09 11:22:23 [INFO] Executing Step 8: ResultParsing
+2024-08-09 11:22:41 [INFO] Question: Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+2024-08-09 11:22:41 [INFO] Running PandasAI with openai LLM...
+2024-08-09 11:22:41 [INFO] Prompt ID: 86c17c0e-3b25-4bf6-9ffb-10f0fb3558fd
+2024-08-09 11:22:41 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 11:22:41 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 11:22:41 [INFO] Executing Step 1: CacheLookup
+2024-08-09 11:22:41 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 11:22:41 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539841f4f,130.621,JACKELINE MICHELS,,False,40.93,53,21.0,Médio,Baixa,False,True,True,False,True,False,True,False,True,True,30.0,True,True,False,True,0,-500,0,-300,-300,-300,0,0,-100,-100,0,0,0,220,Excelente
+66a7ddc8d9c89d65398423b4,523.901,AGRICOLA FRANCISCO LTDA - EPP,0.0,False,329.46,32,30.0,Baixo,Alta,False,,,,False,False,False,False,False,True,,False,False,True,False,0,0,-500,0,0,0,0,-100,0,-100,-100,-50,0,520,Muito baixo
+66a7ddc8d9c89d6539841e34,478.582,LUIZ CARLOS WARPECHOWSKI,1.0,True,17557.64,13,33.0,Alto,Alta,False,False,False,True,False,True,False,True,False,False,15.0,True,False,True,True,0,0,-500,-300,0,-300,-200,-100,-100,0,0,0,-30,270,Bom
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 11:22:41 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 11:22:45 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 11:22:45 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539841f4f,130.621,JACKELINE MICHELS,,False,40.93,53,21.0,Médio,Baixa,False,True,True,False,True,False,True,False,True,True,30.0,True,True,False,True,0,-500,0,-300,-300,-300,0,0,-100,-100,0,0,0,220,Excelente
+66a7ddc8d9c89d65398423b4,523.901,AGRICOLA FRANCISCO LTDA - EPP,0.0,False,329.46,32,30.0,Baixo,Alta,False,,,,False,False,False,False,False,True,,False,False,True,False,0,0,-500,0,0,0,0,-100,0,-100,-100,-50,0,520,Muito baixo
+66a7ddc8d9c89d6539841e34,478.582,LUIZ CARLOS WARPECHOWSKI,1.0,True,17557.64,13,33.0,Alto,Alta,False,False,False,True,False,True,False,True,False,False,15.0,True,False,True,True,0,0,-500,-300,0,-300,-200,-100,-100,0,0,0,-30,270,Bom
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. A different color for each category, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-08-09 11:22:45 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    "TAG_SCORE": ["Excelente", "Muito baixo", "Bom"],
+    "COUNT": [1, 1, 1]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Plotting
+plt.figure(figsize=(8, 8))
+plt.pie(df["COUNT"], labels=df["TAG_SCORE"], autopct='%1.1f%%', startangle=140, colors=['#ff9999', '#66b3ff', '#99ff99'])
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+# Save the plot as a PNG file
+plt.savefig("tag_score_pie_chart.png")
+
+# Declare result var
+result = {"type": "plot", "value": "tag_score_pie_chart.png"}
+            ```
+            
+2024-08-09 11:22:45 [INFO] Executing Step 4: CachePopulation
+2024-08-09 11:22:45 [INFO] Executing Step 5: CodeCleaning
+2024-08-09 11:22:45 [INFO] Saving charts to C:\Users\ACER\Desktop\Trabalho\repos\app-talk-to-data-streamlit_V1\exports\charts\temp_chart.png
+2024-08-09 11:22:45 [INFO] 
+Code running:
+```
+data = {'TAG_SCORE': ['Excelente', 'Muito baixo', 'Bom'], 'COUNT': [1, 1, 1]}
+df = pd.DataFrame(data)
+plt.figure(figsize=(8, 8))
+plt.pie(df['COUNT'], labels=df['TAG_SCORE'], autopct='%1.1f%%', startangle=140, colors=['#ff9999', '#66b3ff', '#99ff99'])
+plt.axis('equal')
+plt.savefig('C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'}
+        ```
+2024-08-09 11:22:45 [INFO] Executing Step 6: CodeExecution
+2024-08-09 11:22:45 [INFO] Executing Step 7: ResultValidation
+2024-08-09 11:22:45 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'}
+2024-08-09 11:22:45 [INFO] Executing Step 8: ResultParsing
+2024-08-09 11:23:28 [INFO] Question: Show me a pie chart with the percentage of each category for TAG_SCORE. , answer in Portuguese
+2024-08-09 11:23:28 [INFO] Running PandasAI with openai LLM...
+2024-08-09 11:23:28 [INFO] Prompt ID: a59f3bdf-bbb0-4375-b643-6b525d6b7db1
+2024-08-09 11:23:28 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 11:23:29 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 11:23:29 [INFO] Executing Step 1: CacheLookup
+2024-08-09 11:23:29 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 11:23:29 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d65398407a7,611.310,AGROCENTRO COMERCIO DE CEREAIS,1.0,False,379.68,16,8.0,Baixo,Alta,False,,False,,False,True,True,True,False,False,,False,True,True,False,0,0,-500,-300,-300,0,-200,0,-100,-100,0,0,0,800,Muito baixo
+66a7ddc8d9c89d6539842ca2,674.309,IZES DA CRUZ OLIVEIRA - ME,,False,10.04,49,19.0,Médio,Alta,False,True,,True,True,True,False,False,False,True,6.0,True,False,True,True,0,-500,0,0,0,-300,0,-100,0,0,-100,-50,-30,270,Excelente
+66a7ddc8d9c89d6539842e9a,77.984,ASSOCIAÇÃO DOS PRODUTORES DA RODOVIA DA,0.0,True,11463.26,47,26.0,Alto,Baixa,False,False,True,False,True,False,False,True,True,False,7.0,True,True,False,True,0,0,-500,0,0,-300,0,-100,0,-100,0,0,0,750,Bom
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. , answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 11:23:29 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 11:23:33 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 11:23:33 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d65398407a7,611.310,AGROCENTRO COMERCIO DE CEREAIS,1.0,False,379.68,16,8.0,Baixo,Alta,False,,False,,False,True,True,True,False,False,,False,True,True,False,0,0,-500,-300,-300,0,-200,0,-100,-100,0,0,0,800,Muito baixo
+66a7ddc8d9c89d6539842ca2,674.309,IZES DA CRUZ OLIVEIRA - ME,,False,10.04,49,19.0,Médio,Alta,False,True,,True,True,True,False,False,False,True,6.0,True,False,True,True,0,-500,0,0,0,-300,0,-100,0,0,-100,-50,-30,270,Excelente
+66a7ddc8d9c89d6539842e9a,77.984,ASSOCIAÇÃO DOS PRODUTORES DA RODOVIA DA,0.0,True,11463.26,47,26.0,Alto,Baixa,False,False,True,False,True,False,False,True,True,False,7.0,True,True,False,True,0,0,-500,0,0,-300,0,-100,0,-100,0,0,0,750,Bom
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a pie chart with the percentage of each category for TAG_SCORE. , answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-08-09 11:23:33 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Convert TAG_SCORE column to category type
+dfs[0]['TAG_SCORE'] = dfs[0]['TAG_SCORE'].astype('category')
+
+# Calculate percentage of each category for TAG_SCORE
+tag_score_percentage = dfs[0]['TAG_SCORE'].value_counts(normalize=True) * 100
+
+# Plotting the pie chart
+plt.figure(figsize=(8, 8))
+tag_score_percentage.plot(kind='pie', autopct='%1.1f%%', startangle=90, colors=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'])
+plt.title('Porcentagem de cada categoria para TAG_SCORE')
+plt.ylabel('')
+plt.legend(tag_score_percentage.index, loc='upper right')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle
+
+# Save the plot as a png file
+plt.savefig('tag_score_pie_chart.png')
+
+# Declare result variable
+result = {"type": "plot", "value": "tag_score_pie_chart.png"}
+            ```
+            
+2024-08-09 11:23:33 [INFO] Executing Step 4: CachePopulation
+2024-08-09 11:23:33 [INFO] Executing Step 5: CodeCleaning
+2024-08-09 11:23:33 [INFO] Saving charts to C:\Users\ACER\Desktop\Trabalho\repos\app-talk-to-data-streamlit_V1\exports\charts\temp_chart.png
+2024-08-09 11:23:33 [INFO] 
+Code running:
+```
+dfs[0]['TAG_SCORE'] = dfs[0]['TAG_SCORE'].astype('category')
+tag_score_percentage = dfs[0]['TAG_SCORE'].value_counts(normalize=True) * 100
+plt.figure(figsize=(8, 8))
+tag_score_percentage.plot(kind='pie', autopct='%1.1f%%', startangle=90, colors=['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'])
+plt.title('Porcentagem de cada categoria para TAG_SCORE')
+plt.ylabel('')
+plt.legend(tag_score_percentage.index, loc='upper right')
+plt.axis('equal')
+plt.savefig('C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'}
+        ```
+2024-08-09 11:23:33 [INFO] Executing Step 6: CodeExecution
+2024-08-09 11:23:33 [INFO] Executing Step 7: ResultValidation
+2024-08-09 11:23:33 [INFO] Answer: {'type': 'plot', 'value': 'C:/Users/ACER/Desktop/Trabalho/repos/app-talk-to-data-streamlit_V1/exports/charts/temp_chart.png'}
+2024-08-09 11:23:33 [INFO] Executing Step 8: ResultParsing
+2024-08-09 11:24:34 [INFO] Question: Show me a table with the name and financial amount of the 5 taxpayers with the highest financial amount, answer in Portuguese
+2024-08-09 11:24:34 [INFO] Running PandasAI with openai LLM...
+2024-08-09 11:24:34 [INFO] Prompt ID: 522fd553-20fd-4d41-b649-007df3bc6cf3
+2024-08-09 11:24:34 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 11:24:34 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 11:24:34 [INFO] Executing Step 1: CacheLookup
+2024-08-09 11:24:34 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 11:24:34 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539842d61,144.746,JOSE DO BONFIM DE SOUZA BRITO,,True,7108.32,10,34.0,Médio,Alta,False,,False,False,True,False,False,True,True,True,7.0,False,True,False,False,0,-500,0,-300,-300,-300,-200,0,0,-100,-100,-50,0,400,Muito baixo
+66a7ddc8d9c89d653984189f,263.966,JALE REPRESENTACOES DE PRODUTOS AGRICOLAS EIRELI,0.0,True,5185.5599999999995,123,32.0,Baixo,Baixa,False,True,True,True,False,True,False,False,False,False,0.0,True,False,True,True,0,0,0,0,-300,0,-200,-100,-100,0,0,-50,-30,600,Excelente
+66a7ddc8d9c89d65398412ee,375.985,ELUINA CONCEIÇÃO DA SILVA,1.0,False,49226.94,60,14.0,Alto,Alta,False,False,,,True,False,True,False,True,False,,True,False,True,True,0,0,-500,0,0,-300,0,-100,-100,0,-100,0,0,100,Bom
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a table with the name and financial amount of the 5 taxpayers with the highest financial amount, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 11:24:34 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 11:24:36 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 11:24:36 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539842d61,144.746,JOSE DO BONFIM DE SOUZA BRITO,,True,7108.32,10,34.0,Médio,Alta,False,,False,False,True,False,False,True,True,True,7.0,False,True,False,False,0,-500,0,-300,-300,-300,-200,0,0,-100,-100,-50,0,400,Muito baixo
+66a7ddc8d9c89d653984189f,263.966,JALE REPRESENTACOES DE PRODUTOS AGRICOLAS EIRELI,0.0,True,5185.5599999999995,123,32.0,Baixo,Baixa,False,True,True,True,False,True,False,False,False,False,0.0,True,False,True,True,0,0,0,0,-300,0,-200,-100,-100,0,0,-50,-30,600,Excelente
+66a7ddc8d9c89d65398412ee,375.985,ELUINA CONCEIÇÃO DA SILVA,1.0,False,49226.94,60,14.0,Alto,Alta,False,False,,,True,False,True,False,True,False,,True,False,True,True,0,0,-500,0,0,-300,0,-100,-100,0,-100,0,0,100,Bom
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Show me a table with the name and financial amount of the 5 taxpayers with the highest financial amount, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-08-09 11:24:36 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Extracting the relevant columns from the dataframe
+df = dfs[0][['NOME_CONTRIBUINTE', 'MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO']]
+
+# Sorting the dataframe by financial amount in descending order and selecting the top 5 taxpayers
+top_taxpayers = df.sort_values(by='MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO', ascending=False).head(5)
+
+# Renaming the columns to Portuguese
+top_taxpayers.columns = ['Nome do Contribuinte', 'Montante Financeiro']
+
+# Setting the result as a dataframe
+result = {"type": "dataframe", "value": top_taxpayers}
+            ```
+            
+2024-08-09 11:24:36 [INFO] Executing Step 4: CachePopulation
+2024-08-09 11:24:36 [INFO] Executing Step 5: CodeCleaning
+2024-08-09 11:24:36 [INFO] 
+Code running:
+```
+df = dfs[0][['NOME_CONTRIBUINTE', 'MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO']]
+top_taxpayers = df.sort_values(by='MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO', ascending=False).head(5)
+top_taxpayers.columns = ['Nome do Contribuinte', 'Montante Financeiro']
+result = {'type': 'dataframe', 'value': top_taxpayers}
+        ```
+2024-08-09 11:24:36 [INFO] Executing Step 6: CodeExecution
+2024-08-09 11:24:36 [INFO] Executing Step 7: ResultValidation
+2024-08-09 11:24:36 [INFO] Answer: {'type': 'dataframe', 'value':                Nome do Contribuinte  Montante Financeiro
+7025      DELMAIR SOUZA BORJA RAMOS         522019163.01
+7008   CELIA REGINA XAVIER DE SOUSA          34704512.96
+6990       CLEUDIANA SILVA DE SOUZA          21083998.96
+7053  MARIA APARECIDA BARBOSA BISPO          15614673.03
+7055         JOANA DARCK DOS SANTOS          14743986.86}
+2024-08-09 11:24:36 [INFO] Executing Step 8: ResultParsing
