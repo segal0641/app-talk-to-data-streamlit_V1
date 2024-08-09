@@ -15,18 +15,12 @@ matplotlib.use('Agg')
 
 
 dotenv.load_dotenv(dotenv.find_dotenv())
-#openai_api_key = st.secrets["OPENAI_API_KEY"]
-#pandas_ai_api_key = st.secrets["PANDAS_AI_API_KEY"]
-#db_user = st.secrets["DB_USER"]
-#db_password = st.secrets["DB_PASSWORD"]
-#db_host = st.secrets["DB_HOST"]
+openai_api_key = st.secrets["OPENAI_API_KEY"]
+pandas_ai_api_key = st.secrets["PANDAS_AI_API_KEY"]
+db_user = st.secrets["DB_USER"]
+db_password = st.secrets["DB_PASSWORD"]
+db_host = st.secrets["DB_HOST"]
 
-
-openai_api_key = os.environ["OPENAI_API_KEY"]
-pandas_ai_api_key = os.environ["PANDAS_AI_API_KEY"]
-db_user = os.environ["DB_USER"]
-db_password = os.environ["DB_PASSWORD"]
-db_host = os.environ["DB_HOST"]
 llm = OpenAI(api_token=openai_api_key)
 
 
@@ -44,24 +38,17 @@ def extract_transform_data():
 df = extract_transform_data()
 
 st.set_page_config(page_title="App Talk to Data", page_icon=":bar_chart:", layout="wide")
-#logo_path = 'https://raw.githubusercontent.com/adenissegall/app-talk-to-data-streamlit/main/app-talk-to-data-streamlit/imagens/logo_inovally.png'
-logo_path = './imagens/logo_inovally.png'
+logo_path = 'https://raw.githubusercontent.com/segal0641/app-talk-to-data-streamlit_V1/main/app-talk-to-data-streamlit-V1/imagens/logo_inovally.png'
 link_inovally = "https://inovally.com.br/"
 
-#logo_url = 'imagens/logo_inovally.png'
-#st.logo("./logo_inovally.png", link=link_inovally)
 st.logo(logo_path, link=link_inovally)
 
-
-#st.title("App Talk to Data")
 st.markdown("<h1 style='text-align: center; color: #14D2AA;'>App Talk to Data</h1>", unsafe_allow_html=True)
 
-
 st.subheader("Use o poder da IA Generativa para descobrir insights sobre os devedores do seu município! 📊📈")
-#imagem_url = 'https://raw.githubusercontent.com/adenissegall/app-talk-to-data-streamlit/main/app-talk-to-data-streamlit/imagens/image.png'
-imagem_url = "./imagens/image.png"
+imagem_url = 'https://raw.githubusercontent.com/segal0641/app-talk-to-data-streamlit_V1/main/app-talk-to-data-streamlit-V1/imagens/image.png'
 st.image(imagem_url)
-#st.image("./image.png")
+
 
 
 dados = Agent(df, config={"llm": llm, "enable_cache": False})
