@@ -82,7 +82,7 @@ if st.button("Gerar resultado"):
         with st.spinner("Gerando resultado..."):
             answer = dados.chat(texto_usuario_traduzido)
             if list_set.intersection(string_set):
-                st.image(chart_path)
+                st.pyplot()
             else:
                 st.write(answer)
 
