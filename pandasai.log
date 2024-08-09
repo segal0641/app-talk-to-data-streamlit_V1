@@ -1260,3 +1260,111 @@ result = {'type': 'dataframe', 'value': top_taxpayers}
 7053  MARIA APARECIDA BARBOSA BISPO          15614673.03
 7055         JOANA DARCK DOS SANTOS          14743986.86}
 2024-08-09 11:24:36 [INFO] Executing Step 8: ResultParsing
+2024-08-09 11:56:19 [INFO] Question: What is the name of the taxpayer with the highest financial amount?, answer in Portuguese
+2024-08-09 11:56:19 [INFO] Running PandasAI with openai LLM...
+2024-08-09 11:56:19 [INFO] Prompt ID: 09d913b5-3778-4be0-8bd4-bfbd3f545a51
+2024-08-09 11:56:19 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-08-09 11:56:19 [INFO] Executing Step 0: ValidatePipelineInput
+2024-08-09 11:56:19 [INFO] Executing Step 1: CacheLookup
+2024-08-09 11:56:19 [INFO] Executing Step 2: PromptGeneration
+2024-08-09 11:56:19 [INFO] Using prompt: <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539842a5c,485.620,ERICKA ELIZABETH DOMIGUEZ VARGAS,,True,1435.43,64,6.0,Médio,Baixa,False,False,False,,False,False,True,False,False,True,,True,True,False,True,0,0,-500,-300,-300,0,0,-100,-100,0,0,0,0,100,Excelente
+66a7ddc8d9c89d6539840fb9,202.479,E M DE CARVALHO RIBEIRO SILVA,1.0,False,5205.41,18,29.0,Baixo,Alta,False,True,,True,True,False,False,True,False,False,24.0,False,False,False,False,0,0,0,0,-300,-300,-200,0,0,-100,-100,-50,0,0,Baixo
+66a7ddc8d9c89d65398414e8,437.808,ODETE ROSA ALVES DA SILVA,0.0,True,326.95,382,16.0,Alto,Baixa,False,,True,False,True,True,True,True,True,False,25.0,False,True,True,True,0,-500,0,0,0,-300,0,-100,-100,0,-100,-50,-30,850,Bom
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the name of the taxpayer with the highest financial amount?, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-08-09 11:56:19 [INFO] Executing Step 3: CodeGenerator
+2024-08-09 11:56:21 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-08-09 11:56:21 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:13507x40
+_id,NUMERO_CONTRIBUINTE,NOME_CONTRIBUINTE,CPF_REGULAR,CNPJ_REGULAR,MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO,QTD_DEBITOS_MUNICIPIO,MAX_TEMPO_DIVIDA_MUNICIPIO,CAT_MONTANTE_FIN_MUNICIPIO,CAT_QTD_DEBITOS_MUNICIPIO,CONTEM_INDICACAO_OBITO,SEM_ENDERECO,SEM_EMAIL,SEM_TELEFONE,CONTEM_AJUIZAMENTO_MUNICIPIO,DIVIDA_MUNICIPIO_MENOR_2_ANOS,DIVIDA_MUNICIPIO_2_A_5_ANOS,DIVIDA_MUNICIPIO_5_A_8_ANOS,DIVIDA_MUNICIPIO_MAIS_8_ANOS,TEM_DIVIDA_PGFN,QTD_ANOS_DIVIDA_MAIS_ANTIGA_PGFN,RECUPERABILIDADE_ALTA_PGFN,RECUPERABILIDADE_MEDIA_PGFN,RECUPERABILIDADE_BAIXA_PGFN,DIVIDA_PGFN_MAIS_5_ANOS,PT_INDICIO_DE_OBITO,PT_REGULARIDADE_PF,PT_REGULARIDADE_PJ,PT_SEM_ENDERECO,PT_SEM_INFO_CONTATO,PT_AJUIZ_MUNICIPIO,PT_DIVIDA_MUNIC_MAIS_8_ANOS,PT_DIVIDA_PGFN,PT_DIVIDA_PGFN_MAIS_5_ANOS,PT_BAIXA_REC_PGFN,PT_DIVIDA_MUN_5_8_ANOS,PT_MEDIA_REC_PGFN,PT_DIVIDA_MUNIC_2_5_ANOS,PT_SCORE,TAG_SCORE
+66a7ddc8d9c89d6539842a5c,485.620,ERICKA ELIZABETH DOMIGUEZ VARGAS,,True,1435.43,64,6.0,Médio,Baixa,False,False,False,,False,False,True,False,False,True,,True,True,False,True,0,0,-500,-300,-300,0,0,-100,-100,0,0,0,0,100,Excelente
+66a7ddc8d9c89d6539840fb9,202.479,E M DE CARVALHO RIBEIRO SILVA,1.0,False,5205.41,18,29.0,Baixo,Alta,False,True,,True,True,False,False,True,False,False,24.0,False,False,False,False,0,0,0,0,-300,-300,-200,0,0,-100,-100,-50,0,0,Baixo
+66a7ddc8d9c89d65398414e8,437.808,ODETE ROSA ALVES DA SILVA,0.0,True,326.95,382,16.0,Alto,Baixa,False,,True,False,True,True,True,True,True,False,25.0,False,True,True,True,0,-500,0,0,0,-300,0,-100,-100,0,-100,-50,-30,850,Bom
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is the name of the taxpayer with the highest financial amount?, answer in Portuguese
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-08-09 11:56:21 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+highest_amount_taxpayer = max(dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'])
+highest_amount_taxpayer_name = dfs[0].loc[dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'] == highest_amount_taxpayer, 'NOME_CONTRIBUINTE'].values[0]
+
+result = { "type": "string", "value": f"O contribuinte com o maior montante financeiro é: {highest_amount_taxpayer_name}." }
+            ```
+            
+2024-08-09 11:56:21 [INFO] Executing Step 4: CachePopulation
+2024-08-09 11:56:21 [INFO] Executing Step 5: CodeCleaning
+2024-08-09 11:56:21 [INFO] 
+Code running:
+```
+highest_amount_taxpayer = max(dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'])
+highest_amount_taxpayer_name = dfs[0].loc[dfs[0]['MONTANTE_FINANCEIRO_DEBITOS_MUNICIPIO'] == highest_amount_taxpayer, 'NOME_CONTRIBUINTE'].values[0]
+result = {'type': 'string', 'value': f'O contribuinte com o maior montante financeiro é: {highest_amount_taxpayer_name}.'}
+        ```
+2024-08-09 11:56:21 [INFO] Executing Step 6: CodeExecution
+2024-08-09 11:56:21 [INFO] Executing Step 7: ResultValidation
+2024-08-09 11:56:21 [INFO] Answer: {'type': 'string', 'value': 'O contribuinte com o maior montante financeiro é: DELMAIR SOUZA BORJA RAMOS.'}
+2024-08-09 11:56:21 [INFO] Executing Step 8: ResultParsing

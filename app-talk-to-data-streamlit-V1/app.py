@@ -31,7 +31,7 @@ llm = OpenAI(api_token=openai_api_key)
 
 
 def extract_transform_data():
-    client_hml = pymongo.MongoClient('mongodb+srv://'+db_user+':'+db_password+'@data-api-homolog.rzzzqv5.mongodb.net', unicode_decode_error_handler='ignore')
+    client_hml = pymongo.MongoClient('mongodb+srv://'+db_user+':'+db_password+db_host, unicode_decode_error_handler='ignore')
     
     db = client_hml['analytics']
     collection = db["score_devedores"]
