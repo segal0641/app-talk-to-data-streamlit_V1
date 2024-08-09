@@ -64,9 +64,26 @@ texto_usuario_traduzido = GoogleTranslator(source='auto', target='en').translate
 texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
 
 
+#if st.button("Gerar resultado"):
+    #if texto_usuario_traduzido:
+        #with st.spinner("Gerando resultado..."):
+            #answer = dados.chat(texto_usuario_traduzido)
+            #st.write(answer)
+
+
+text = texto_usuario_traduzido.lower()
+lista_strings = ['gráfico', 'grafico']
+
+string_set = set(text.split())
+list_set = set(lista_strings)
+
 if st.button("Gerar resultado"):
     if texto_usuario_traduzido:
         with st.spinner("Gerando resultado..."):
             answer = dados.chat(texto_usuario_traduzido)
-            st.write(answer)
+            if list_set.intersection(string_set):
+                st.set_option('deprecation.showPyplotGlobalUse', False)
+                st.pyplot()
+            else:
+                st.write(answer)
 
