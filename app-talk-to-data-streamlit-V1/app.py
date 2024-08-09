@@ -81,12 +81,5 @@ if st.button("Gerar resultado"):
     if texto_usuario_traduzido:
         with st.spinner("Gerando resultado..."):
             answer = dados.chat(texto_usuario_traduzido)
-            st.success(answer)
-
-            st.set_option('deprecation.showPyplotGlobalUse', False)
-            st.pyplot()
-    else:
-        st.warning("Por favor, informe o que você quer ver nos dados.")
-    
-
+            st.write(answer)
 
