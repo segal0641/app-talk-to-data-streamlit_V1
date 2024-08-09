@@ -70,7 +70,7 @@ texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
             #answer = dados.chat(texto_usuario_traduzido)
             #st.write(answer)
 
-chart_path = "./exports/charts/temp_chart.png"
+chart_path = "./app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
 text = texto_usuario_traduzido.lower()
 lista_strings = ['gráfico', 'grafico']
 
