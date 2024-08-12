@@ -126,4 +126,4 @@ if st.button("Gerar resultado"):
             },
         )
 
-    answer = query_engine.chat(texto_usuario_traduzido)
+        answer = query_engine.chat(texto_usuario_traduzido)
