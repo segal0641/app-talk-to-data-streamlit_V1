@@ -86,7 +86,7 @@ if st.button("Gerar resultado"):
                 st.success(answer)
                 #st.set_option('deprecation.showPyplotGlobalUse', False)
                 #st.pyplot()
-                st.image(chart_path2)
+                st.image(chart_path)
             else:
                 st.write(answer)
 
