@@ -71,6 +71,7 @@ texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
             #st.write(answer)
 
 chart_path = "./app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
+chart_path2 = "/mount/src/app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
 text = texto_usuario_traduzido.lower()
 lista_strings = ['gráfico', 'grafico']
 
@@ -83,8 +84,9 @@ if st.button("Gerar resultado"):
             answer = dados.chat(texto_usuario_traduzido)
             if list_set.intersection(string_set):
                 st.success(answer)
-                st.set_option('deprecation.showPyplotGlobalUse', False)
-                st.pyplot()
+                #st.set_option('deprecation.showPyplotGlobalUse', False)
+                #st.pyplot()
+                st.image(chart_path2)
             else:
                 st.write(answer)
 
