@@ -115,14 +115,15 @@ class StreamlitResponse(ResponseParser):
         st.write(result["value"])
         return
 
-if texto_usuario_traduzido:
-    llm = OpenAI(api_token=os.environ["OPENAI_API_KEY"])
-    query_engine = SmartDataframe(
-        df,
-        config={
-            "llm": llm,
-            "response_parser": StreamlitResponse
-        },
-    )
+if st.button("Gerar resultado"):
+    if texto_usuario_traduzido:
+        llm = OpenAI(api_token=os.environ["OPENAI_API_KEY"])
+        query_engine = SmartDataframe(
+            df,
+            config={
+                "llm": llm,
+                "response_parser": StreamlitResponse
+            },
+        )
 
     answer = query_engine.chat(texto_usuario_traduzido)
