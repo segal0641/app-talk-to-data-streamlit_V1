@@ -70,23 +70,38 @@ texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
             #answer = dados.chat(texto_usuario_traduzido)
             #st.write(answer)
 
-chart_path = "./app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
-chart_path2 = "/mount/src/app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
-text = texto_usuario_traduzido.lower()
-lista_strings = ['gráfico', 'grafico']
 
-string_set = set(text.split())
-list_set = set(lista_strings)
+
+
+#chart_path = "./app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
+#chart_path2 = "/mount/src/app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
+#text = texto_usuario_traduzido.lower()
+#lista_strings = ['gráfico', 'grafico']
+#
+#string_set = set(text.split())
+#list_set = set(lista_strings)
+#
+#if st.button("Gerar resultado"):
+    #if texto_usuario_traduzido:
+        #with st.spinner("Gerando resultado..."):
+            #answer = dados.chat(texto_usuario_traduzido)
+            #if list_set.intersection(string_set):
+                #st.success(answer)
+                #st.set_option('deprecation.showPyplotGlobalUse', False)
+                #st.pyplot()
+                ##st.image(chart_path)
+            #else:
+                #st.write(answer)
+
+
 
 if st.button("Gerar resultado"):
     if texto_usuario_traduzido:
         with st.spinner("Gerando resultado..."):
             answer = dados.chat(texto_usuario_traduzido)
-            if list_set.intersection(string_set):
-                st.success(answer)
-                st.set_option('deprecation.showPyplotGlobalUse', False)
-                st.pyplot()
-                #st.image(chart_path)
-            else:
-                st.write(answer)
+            st.success(answer)
 
+            st.set_option('deprecation.showPyplotGlobalUse', False)
+            st.pyplot()
+    else:
+        st.warning("Por favor, informe o que você quer ver nos dados.")
