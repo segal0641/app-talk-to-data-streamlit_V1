@@ -6,9 +6,12 @@ from dotenv import load_dotenv
 import pymongo
 
 from pandasai import Agent
+from pandasai import SmartDataframe
 from pandasai.llm.openai import OpenAI
 from deep_translator import GoogleTranslator
 import matplotlib
+from pandasai.responses.response_parser import ResponseParser
+
 
 pd.set_option('display.float_format', lambda x: '%.2f' % x)
 matplotlib.use('Agg')
@@ -73,8 +76,8 @@ texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
 
 
 
-#chart_path = "./app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
-#chart_path2 = "/mount/src/app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
+chart_path = "./app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
+chart_path2 = "/mount/src/app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
 #text = texto_usuario_traduzido.lower()
 #lista_strings = ['gráfico', 'grafico']
 #
@@ -95,13 +98,31 @@ texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
 
 
 
-if st.button("Gerar resultado"):
-    if texto_usuario_traduzido:
-        with st.spinner("Gerando resultado..."):
-            answer = dados.chat(texto_usuario_traduzido)
-            st.success(answer)
 
-            st.set_option('deprecation.showPyplotGlobalUse', False)
-            st.pyplot()
-    else:
-        st.warning("Por favor, informe o que você quer ver nos dados.")
+class StreamlitResponse(ResponseParser):
+    def __init__(self, context) -> None:
+        super().__init__(context)
+
+    def format_dataframe(self, result):
+        st.dataframe(result["value"])
+        return
+
+    def format_plot(self, result):
+        st.image(result["value"])
+        return
+
+    def format_other(self, result):
+        st.write(result["value"])
+        return
+
+if texto_usuario_traduzido:
+    llm = OpenAI(api_token=os.environ["OPENAI_API_KEY"])
+    query_engine = SmartDataframe(
+        df,
+        config={
+            "llm": llm,
+            "response_parser": StreamlitResponse
+        },
+    )
+
+    answer = query_engine.chat(texto_usuario_traduzido)
