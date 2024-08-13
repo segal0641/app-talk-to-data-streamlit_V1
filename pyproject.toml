@@ -9,7 +9,7 @@ packages = [{include = "app-talk-to-data-streamlit-V1"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 pandas = "1.5.3"
-streamlit = "^1.35.0"
+streamlit = "^1.37.0"
 deep_translator = "1.11.4"
 matplotlib = "3.8.3"
 openai = "1.31.2"

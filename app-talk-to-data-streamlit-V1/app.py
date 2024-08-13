@@ -54,7 +54,7 @@ st.image(imagem_url)
 
 
 
-dados = Agent(df, config={"llm": llm, "enable_cache": False})
+#dados = Agent(df, config={"llm": llm, "enable_cache": False})
 
 
 st.dataframe(df)
@@ -67,11 +67,11 @@ texto_usuario_traduzido = GoogleTranslator(source='auto', target='en').translate
 texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
 
 
-if st.button("Gerar resultado"):
-    if texto_usuario_traduzido:
-        with st.spinner("Gerando resultado..."):
-            answer = dados.chat(texto_usuario_traduzido)
-            st.write(answer)
+#if st.button("Gerar resultado"):
+    #if texto_usuario_traduzido:
+        #with st.spinner("Gerando resultado..."):
+            #answer = dados.chat(texto_usuario_traduzido)
+            #st.write(answer)
 
 
 
@@ -99,25 +99,25 @@ if st.button("Gerar resultado"):
 
 
 
-#class StreamlitResponse(ResponseParser):
-    #def __init__(self, context) -> None:
-        #super().__init__(context)
-#
-    #def format_dataframe(self, result):
-        #st.dataframe(result["value"])
-        #return
-#
-    #def format_plot(self, result):
-        #st.image(result["value"])
-        #return
-#
-    #def format_other(self, result):
-        #st.write(result["value"])
-        #return
-#
-#if st.button("Gerar resultado"):
-    #if texto_usuario_traduzido:
-        #llm = OpenAI(api_token=openai_api_key)
-        #query_engine = SmartDataframe(df, config={"llm": llm, "response_parser": StreamlitResponse})
-        #answer = query_engine.chat(texto_usuario_traduzido)
-        #st.write(answer)
+class StreamlitResponse(ResponseParser):
+    def __init__(self, context) -> None:
+        super().__init__(context)
+
+    def format_dataframe(self, result):
+        st.dataframe(result["value"])
+        return
+
+    def format_plot(self, result):
+        st.image(result["value"])
+        return
+
+    def format_other(self, result):
+        st.write(result["value"])
+        return
+
+if st.button("Gerar resultado"):
+    if texto_usuario_traduzido:
+        llm = OpenAI(api_token=openai_api_key)
+        query_engine = SmartDataframe(df, config={"llm": llm, "response_parser": StreamlitResponse})
+        answer = query_engine.chat(texto_usuario_traduzido)
+        st.write(answer)
