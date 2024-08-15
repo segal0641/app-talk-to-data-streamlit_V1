@@ -60,11 +60,23 @@ st.image(imagem_url)
 st.dataframe(df)
 
 
-st.subheader("No espaço abaixo, escreva o que você gostaria de ver nos dados 👇")
-texto_usuario = st.text_area("Ex: Qual é o nome do contribuinte com maior montante financeiro? e qual é o montante financeiro dele? Me mostre um gráfico de pizza com o percentual de cada categoria para TAG_SCORE. Uma cor diferente para cada categoria")
+#st.subheader("No espaço abaixo, escreva o que você gostaria de ver nos dados 👇")
+#texto_usuario = st.text_area("Ex: Qual é o nome do contribuinte com maior montante financeiro? e qual é o montante financeiro dele? Me mostre um gráfico de pizza com o percentual de cada categoria para TAG_SCORE. Uma cor diferente para cada categoria")
+#texto_usuario = texto_usuario + ', responda em português'
+#texto_usuario_traduzido = GoogleTranslator(source='auto', target='en').translate(texto_usuario)
+#texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
+
+
+st.subheader("No espaço abaixo, você pode escrever o que gostaria de ver nos dados!")
+st.text("Exemplos:")
+st.text(":ballot_box_with_check: Qual é o nome do contribuinte com maior montante financeiro? e qual é o montante financeiro dele?")
+st.text(":ballot_box_with_check: Me mostre um gráfico de pizza com o percentual de cada categoria para TAG_SCORE. Uma cor diferente para cada categoria")
+st.text(":ballot_box_with_check: Me mostre uma tabela com os nomes, montante financeiro e tag_score  das pessoas que possuem tag_score = Excelente")
+texto_usuario = st.text_area("")
 texto_usuario = texto_usuario + ', responda em português'
 texto_usuario_traduzido = GoogleTranslator(source='auto', target='en').translate(texto_usuario)
 texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
+
 
 
 #if st.button("Gerar resultado"):
