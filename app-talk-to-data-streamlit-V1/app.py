@@ -72,6 +72,7 @@ st.write("Exemplos:")
 st.write("✅ Qual é o nome do contribuinte com maior montante financeiro? e qual é o montante financeiro dele?")
 st.write("✅ Me mostre um gráfico de pizza com o percentual de cada categoria para TAG_SCORE. Uma cor diferente para cada categoria")
 st.write("✅ Me mostre uma tabela com os nomes, montante financeiro e tag_score  das pessoas que possuem tag_score = Excelente")
+st.write("##")
 texto_usuario = st.text_area("Digite aqui: ")
 texto_usuario = texto_usuario + ', responda em português'
 texto_usuario_traduzido = GoogleTranslator(source='auto', target='en').translate(texto_usuario)
