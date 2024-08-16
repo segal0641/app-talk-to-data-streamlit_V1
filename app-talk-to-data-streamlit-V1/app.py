@@ -70,7 +70,7 @@ st.dataframe(df)
 st.subheader("No espaço abaixo, você pode escrever o que gostaria de ver nos dados!")
 st.write("Exemplos:")
 st.write("✅ Qual é o nome do contribuinte com maior montante financeiro? e qual é o montante financeiro dele?")
-st.write("✅ Me mostre um gráfico de pizza com o percentual de cada categoria para TAG_SCORE. Uma cor diferente para cada categoria")
+st.write("✅ Me mostre um gráfico de pizza com o percentual de cada categoria para TAG_SCORE")
 st.write("✅ Me mostre uma tabela com os nomes, montante financeiro e tag_score  das pessoas que possuem tag_score = Excelente")
 st.markdown('#')
 texto_usuario = st.text_area("Digite aqui: ")
@@ -131,7 +131,7 @@ class StreamlitResponse(ResponseParser):
 if st.button("Gerar resultado"):
     if texto_usuario_traduzido:
         with st.spinner("Gerando resultado..."):
-            llm = OpenAI(api_token=openai_api_key)
+            llm = OpenAI(temperature=0, seed=26, api_token=openai_api_key)
             query_engine = SmartDataframe(df, config={"llm": llm, "response_parser": StreamlitResponse})
             answer = query_engine.chat(texto_usuario_traduzido)
             st.write(answer)
