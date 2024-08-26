@@ -31,12 +31,10 @@ def extract_transform_data():
     client_hml = pymongo.MongoClient('mongodb+srv://'+db_user+':'+db_password+db_host, unicode_decode_error_handler='ignore')
     
     db = client_hml['analytics']
-    collection = db["score_devedores"]
+    collection = db["base_talk_to_data"]
     df = pd.json_normalize(list(collection.find()))
 
-    df_final = df.drop(columns=['DOCUMENTO', 'PT_TOTAL', 'PT_SOMA'])
-
-    return df_final
+    return df
 
 df = extract_transform_data()
 
