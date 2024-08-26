@@ -69,7 +69,7 @@ st.subheader("No espaço abaixo, você pode escrever o que gostaria de ver nos d
 st.write("Exemplos:")
 st.write("✅ Qual é o nome do contribuinte com maior valor total em débitos com o município? e qual é o valor total dele?")
 st.write("✅ Me mostre um gráfico de pizza com o percentual de cada categoria de CLASSIFICAÇÃO")
-st.write("✅ Me mostre uma tabela com os nomes, valor total em débitos com o município e classificação  das pessoas que possuem classificação = Excelente")
+st.write("✅ Me mostre uma tabela com todos os nomes, valor total em débitos com o município e classificação  das pessoas que possuem classificação = Excelente")
 st.markdown('#')
 texto_usuario = st.text_area("Digite aqui: ")
 texto_usuario = texto_usuario + ', responda em português'
