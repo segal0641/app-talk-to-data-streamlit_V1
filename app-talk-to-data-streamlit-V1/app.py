@@ -118,7 +118,7 @@ st.markdown('#')
 st.subheader("Informações sobre os débitos:")
 st.dataframe(df_divida_completo)
 
-st.subheader("Abaixo, digite o que você gostaria de saber sobre os débitos dos contribuintes!")
+st.subheader("Abaixo, digite o que você gostaria de saber sobre os débitos do município:")
 
 texto_usuario2 = st.text_area("Insira sua pergunta abaixo: ", key=3)
 texto_usuario2 = texto_usuario2 + ', responda em português'
