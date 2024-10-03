@@ -29,19 +29,23 @@ llm = OpenAI(api_token=openai_api_key)
 
 def extract_transform_data():
     client_hml = pymongo.MongoClient('mongodb+srv://'+db_user+':'+db_password+db_host, unicode_decode_error_handler='ignore')
-    db = client_hml['analytics']
+    db_analytics = client_hml['analytics']
+    db_entities = client_hml['entities']
     
-    collection_contribuinte = db["base_talk_to_data"]
-    collection_dividas = db["divida"]
+    collection_contribuinte = db_analytics["base_talk_to_data"]
+    collection_divida = db_entities["divida"]
+    collection_score_debito = db_analytics["divida"]
 
     df_contribuinte = pd.json_normalize(list(collection_contribuinte.find()))
-    df_dividas = pd.json_normalize(list(collection_dividas.find()))
+    df_divida = pd.json_normalize(list(collection_divida.find({}, {"numero_contribuinte": 1, "nome": 1, "natureza_pessoa": 1, "situacao": 1, "exercicio": 1, "tributo": 1, "Protestado": 1, "valor": 1})))
+    df_score_debito = pd.json_normalize(list(collection_score_debito.find({}, {"_id": 1, "debtRecoveryClass": 1})))
+    df_divida_completo = pd.merge(df_divida, df_score_debito, on='_id', how='left')
 
-    return df_contribuinte, df_dividas
+    return df_contribuinte, df_divida_completo
 
 
 
-df_contribuinte, df_dividas = extract_transform_data()
+df_contribuinte, df_divida_completo = extract_transform_data()
 
 
 
@@ -112,7 +116,7 @@ if st.button("Gerar resultado", key=2):
 #--------------------------------------------------------------------------------------------
 st.markdown('#')
 st.subheader("Informações sobre os débitos:")
-st.dataframe(df_dividas)
+st.dataframe(df_divida_completo)
 
 st.subheader("Abaixo, digite o que você gostaria de saber sobre os débitos dos contribuintes!")
 
@@ -142,6 +146,6 @@ if st.button("Gerar resultado", key=4):
     if texto_usuario_traduzido2:
         with st.spinner("Gerando resultado..."):
             llm = OpenAI(temperature=0, seed=26, api_token=openai_api_key)
-            query_engine = SmartDataframe(df_dividas, config={"llm": llm, "response_parser": StreamlitResponse})
+            query_engine = SmartDataframe(df_divida_completo, config={"llm": llm, "response_parser": StreamlitResponse})
             answer = query_engine.chat(texto_usuario_traduzido2)
             st.write(answer)
