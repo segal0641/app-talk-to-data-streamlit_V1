@@ -116,7 +116,7 @@ if st.button("Gerar resultado", key=2):
 #--------------------------------------------------------------------------------------------
 st.markdown('#')
 st.subheader("Informações sobre os débitos:")
-st.dataframe(df_divida)
+st.dataframe(df_divida_completo)
 
 st.subheader("Abaixo, digite o que você gostaria de saber sobre os débitos dos contribuintes!")
 
@@ -146,6 +146,6 @@ if st.button("Gerar resultado", key=4):
     if texto_usuario_traduzido2:
         with st.spinner("Gerando resultado..."):
             llm = OpenAI(temperature=0, seed=26, api_token=openai_api_key)
-            query_engine = SmartDataframe(df_divida, config={"llm": llm, "response_parser": StreamlitResponse})
+            query_engine = SmartDataframe(df_divida_completo, config={"llm": llm, "response_parser": StreamlitResponse})
             answer = query_engine.chat(texto_usuario_traduzido2)
             st.write(answer)
