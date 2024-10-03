@@ -29,14 +29,21 @@ llm = OpenAI(api_token=openai_api_key)
 
 def extract_transform_data():
     client_hml = pymongo.MongoClient('mongodb+srv://'+db_user+':'+db_password+db_host, unicode_decode_error_handler='ignore')
-    
     db = client_hml['analytics']
-    collection = db["base_talk_to_data"]
-    df = pd.json_normalize(list(collection.find()))
+    
+    collection_contribuinte = db["base_talk_to_data"]
+    collection_dividas = db["divida"]
 
-    return df
+    df_contribuinte = pd.json_normalize(list(collection_contribuinte.find()))
+    df_dividas = pd.json_normalize(list(collection_dividas.find()))
 
-df = extract_transform_data()
+    return df_contribuinte, df_dividas
+
+
+
+df_contribuinte, df_dividas = extract_transform_data()
+
+
 
 st.set_page_config(page_title="App Talk to Data", page_icon=":bar_chart:", layout="wide")
 logo_path = 'https://raw.githubusercontent.com/segal0641/app-talk-to-data-streamlit_V1/main/app-talk-to-data-streamlit-V1/imagens/logo_inovally.png'
@@ -49,13 +56,13 @@ st.markdown("<h1 style='text-align: center; color: #14D2AA;'>App Talk to Data</h
 st.subheader("O poder da IA Generativa para descobrir insights sobre os devedores do seu município! 📊📈")
 imagem_url = 'https://raw.githubusercontent.com/segal0641/app-talk-to-data-streamlit_V1/main/app-talk-to-data-streamlit-V1/imagens/image.png'
 st.image(imagem_url)
-
+st.markdown('#')
 
 
 #dados = Agent(df, config={"llm": llm, "enable_cache": False})
 
-
-st.dataframe(df)
+st.subheader("Informações sobre os contribuintes:")
+st.dataframe(df_contribuinte)
 
 
 #st.subheader("No espaço abaixo, escreva o que você gostaria de ver nos dados 👇")
@@ -65,49 +72,16 @@ st.dataframe(df)
 #texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
 
 
-st.subheader("No espaço abaixo, você pode escrever o que gostaria de ver nos dados!")
+st.subheader("No espaço abaixo, você pode escrever o que gostaria de ver nos dados dos contribuintes!")
 st.write("Exemplos:")
 st.write("✅ Qual é o nome do contribuinte com maior valor total em débitos com o município? e qual é o valor total dele?")
 st.write("✅ Me mostre um gráfico de pizza com o percentual de cada categoria de CLASSIFICAÇÃO")
 st.write("✅ Me mostre uma tabela com todos os nomes, valor total em débitos com o município e classificação  das pessoas que possuem classificação = Excelente")
-st.markdown('#')
+
 texto_usuario = st.text_area("Digite aqui: ")
 texto_usuario = texto_usuario + ', responda em português'
 texto_usuario_traduzido = GoogleTranslator(source='auto', target='en').translate(texto_usuario)
 texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
-
-
-
-#if st.button("Gerar resultado"):
-    #if texto_usuario_traduzido:
-        #with st.spinner("Gerando resultado..."):
-            #answer = dados.chat(texto_usuario_traduzido)
-            #st.write(answer)
-
-
-
-
-#chart_path = "./app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
-#chart_path2 = "/mount/src/app-talk-to-data-streamlit_v1/exports/charts/temp_chart.png"
-#text = texto_usuario_traduzido.lower()
-#lista_strings = ['gráfico', 'grafico']
-#
-#string_set = set(text.split())
-#list_set = set(lista_strings)
-#
-#if st.button("Gerar resultado"):
-    #if texto_usuario_traduzido:
-        #with st.spinner("Gerando resultado..."):
-            #answer = dados.chat(texto_usuario_traduzido)
-            #if list_set.intersection(string_set):
-                #st.success(answer)
-                #st.set_option('deprecation.showPyplotGlobalUse', False)
-                #st.pyplot()
-                ##st.image(chart_path)
-            #else:
-                #st.write(answer)
-
-
 
 
 class StreamlitResponse(ResponseParser):
@@ -130,6 +104,44 @@ if st.button("Gerar resultado"):
     if texto_usuario_traduzido:
         with st.spinner("Gerando resultado..."):
             llm = OpenAI(temperature=0, seed=26, api_token=openai_api_key)
-            query_engine = SmartDataframe(df, config={"llm": llm, "response_parser": StreamlitResponse})
+            query_engine = SmartDataframe(df_contribuinte, config={"llm": llm, "response_parser": StreamlitResponse})
             answer = query_engine.chat(texto_usuario_traduzido)
+            st.write(answer)
+
+
+#--------------------------------------------------------------------------------------------
+st.markdown('#')
+st.subheader("Informações sobre os débitos:")
+st.dataframe(df_dividas)
+
+st.subheader("Abaixo, digite o que você gostaria de saber sobre os débitos dos contribuintes!")
+
+texto_usuario2 = st.text_area("Digite aqui: ")
+texto_usuario2 = texto_usuario2 + ', responda em português'
+texto_usuario_traduzido2 = GoogleTranslator(source='auto', target='en').translate(texto_usuario2)
+texto_usuario_traduzido2 = texto_usuario_traduzido2.replace('\u200b\u200b', '')
+
+
+class StreamlitResponse(ResponseParser):
+    def __init__(self, context) -> None:
+        super().__init__(context)
+
+    def format_dataframe(self, result):
+        st.dataframe(result["value"])
+        return
+
+    def format_plot(self, result):
+        st.image(result["value"])
+        return
+
+    def format_other(self, result):
+        st.write(result["value"])
+        return
+
+if st.button("Gerar resultado"):
+    if texto_usuario_traduzido2:
+        with st.spinner("Gerando resultado..."):
+            llm = OpenAI(temperature=0, seed=26, api_token=openai_api_key)
+            query_engine = SmartDataframe(df_dividas, config={"llm": llm, "response_parser": StreamlitResponse})
+            answer = query_engine.chat(texto_usuario_traduzido2)
             st.write(answer)
