@@ -116,7 +116,7 @@ st.dataframe(df_dividas)
 
 st.subheader("Abaixo, digite o que você gostaria de saber sobre os débitos dos contribuintes!")
 
-texto_usuario2 = st.text_area("Digite aqui: ")
+texto_usuario2 = st.text_area("Insira sua pergunta abaixo: ")
 texto_usuario2 = texto_usuario2 + ', responda em português'
 texto_usuario_traduzido2 = GoogleTranslator(source='auto', target='en').translate(texto_usuario2)
 texto_usuario_traduzido2 = texto_usuario_traduzido2.replace('\u200b\u200b', '')
