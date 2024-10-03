@@ -100,7 +100,7 @@ class StreamlitResponse(ResponseParser):
         st.write(result["value"])
         return
 
-if st.button("Gerar resultado", key=1):
+if st.button("Gerar resultado", key=2):
     if texto_usuario_traduzido:
         with st.spinner("Gerando resultado..."):
             llm = OpenAI(temperature=0, seed=26, api_token=openai_api_key)
@@ -116,7 +116,7 @@ st.dataframe(df_dividas)
 
 st.subheader("Abaixo, digite o que você gostaria de saber sobre os débitos dos contribuintes!")
 
-texto_usuario2 = st.text_area("Insira sua pergunta abaixo: ", key=2)
+texto_usuario2 = st.text_area("Insira sua pergunta abaixo: ", key=3)
 texto_usuario2 = texto_usuario2 + ', responda em português'
 texto_usuario_traduzido2 = GoogleTranslator(source='auto', target='en').translate(texto_usuario2)
 texto_usuario_traduzido2 = texto_usuario_traduzido2.replace('\u200b\u200b', '')
@@ -138,7 +138,7 @@ class StreamlitResponse(ResponseParser):
         st.write(result["value"])
         return
 
-if st.button("Gerar resultado", key=2):
+if st.button("Gerar resultado", key=4):
     if texto_usuario_traduzido2:
         with st.spinner("Gerando resultado..."):
             llm = OpenAI(temperature=0, seed=26, api_token=openai_api_key)
