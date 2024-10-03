@@ -100,7 +100,7 @@ class StreamlitResponse(ResponseParser):
         st.write(result["value"])
         return
 
-if st.button("Gerar resultado"):
+if st.button("Gerar resultado", key=1):
     if texto_usuario_traduzido:
         with st.spinner("Gerando resultado..."):
             llm = OpenAI(temperature=0, seed=26, api_token=openai_api_key)
@@ -138,7 +138,7 @@ class StreamlitResponse(ResponseParser):
         st.write(result["value"])
         return
 
-if st.button("Gerar resultado"):
+if st.button("Gerar resultado", key=2):
     if texto_usuario_traduzido2:
         with st.spinner("Gerando resultado..."):
             llm = OpenAI(temperature=0, seed=26, api_token=openai_api_key)
