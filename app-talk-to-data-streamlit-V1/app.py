@@ -78,7 +78,7 @@ st.write("✅ Qual é o nome do contribuinte com maior valor total em débitos c
 st.write("✅ Me mostre um gráfico de pizza com o percentual de cada categoria de CLASSIFICAÇÃO")
 st.write("✅ Me mostre uma tabela com todos os nomes, valor total em débitos com o município e classificação  das pessoas que possuem classificação = Excelente")
 
-texto_usuario = st.text_area("Digite aqui: ")
+texto_usuario = st.text_area("Digite aqui: ", key=1)
 texto_usuario = texto_usuario + ', responda em português'
 texto_usuario_traduzido = GoogleTranslator(source='auto', target='en').translate(texto_usuario)
 texto_usuario_traduzido = texto_usuario_traduzido.replace('\u200b\u200b', '')
@@ -116,7 +116,7 @@ st.dataframe(df_dividas)
 
 st.subheader("Abaixo, digite o que você gostaria de saber sobre os débitos dos contribuintes!")
 
-texto_usuario2 = st.text_area("Insira sua pergunta abaixo: ")
+texto_usuario2 = st.text_area("Insira sua pergunta abaixo: ", key=2)
 texto_usuario2 = texto_usuario2 + ', responda em português'
 texto_usuario_traduzido2 = GoogleTranslator(source='auto', target='en').translate(texto_usuario2)
 texto_usuario_traduzido2 = texto_usuario_traduzido2.replace('\u200b\u200b', '')
