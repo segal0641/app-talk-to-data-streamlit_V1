@@ -46,7 +46,7 @@ st.logo(logo_path, link=link_inovally)
 
 st.markdown("<h1 style='text-align: center; color: #14D2AA;'>App Talk to Data</h1>", unsafe_allow_html=True)
 
-st.subheader("Use o poder da IA Generativa para descobrir insights sobre os devedores do seu município! 📊📈")
+st.subheader("O poder da IA Generativa para descobrir insights sobre os devedores do seu município! 📊📈")
 imagem_url = 'https://raw.githubusercontent.com/segal0641/app-talk-to-data-streamlit_V1/main/app-talk-to-data-streamlit-V1/imagens/image.png'
 st.image(imagem_url)
 
